@@ -12,4 +12,11 @@ on:
       - main
       - dev
 
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print welcome
+        run: echo "This is the first action in the repository"
+
 
