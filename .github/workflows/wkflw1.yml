@@ -17,6 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print welcome
-        run: echo "This is the first action in the repository"
+        run: echo "This is the first job in the repository and it will always run"
+  
+  job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print comit message
+        run: git log -1 --pretty=format:%B
+
 
 
