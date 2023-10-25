@@ -2,12 +2,33 @@ name: First workflow in repo
 
 on:
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true
+        type: boolean
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
 
   push:
     branches:
       - main
   
   pull_request:
+    types:
+      - opened
+      - reopened
     branches:
       - main
       - dev
