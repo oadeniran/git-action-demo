@@ -1,0 +1,15 @@
+name: First workflow in repo
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+  
+  pull_request:
+    branches:
+      - main
+      - dev
+
+
