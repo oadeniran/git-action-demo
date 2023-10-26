@@ -1,0 +1,15 @@
+name: Second workflow in repo
+
+# Only trigger, when the build workflow succeeded
+on:
+  workflow_run:
+    workflows: ["First workflow in repo"]
+    types:
+      - completed
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First step
+        run: echo "New workflow started after thecompletion of the first"
