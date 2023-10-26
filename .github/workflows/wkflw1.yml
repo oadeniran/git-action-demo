@@ -2,12 +2,33 @@ name: First workflow in repo
 
 on:
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true
+        type: boolean
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
 
   push:
     branches:
       - main
   
   pull_request:
+    types:
+      - opened
+      - reopened
     branches:
       - main
       - dev
@@ -17,6 +38,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print welcome
-        run: echo "This is the first action in the repository"
+        run: echo "This is the first job in the repository and it will always run"
+  
+  job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print comit message
+        run: echo ${{ github.event.head_commit.message }}
+
 
 
